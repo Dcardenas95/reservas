@@ -43,4 +43,17 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function sendWelcomeEmail()
+    {
+        $token = app('auth.password.broker')
+            ->createToken($this);
+
+        $this->notify(new WelcomeEmailNotification($this, $token));
+    }
+
+    public function services()
+    {
+        return $this->belongsToMany(Service::class);
+    }
 }

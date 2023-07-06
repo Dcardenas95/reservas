@@ -29,6 +29,8 @@ Route::middleware('auth')->group(function () {
     })->name('dashboard');
     
     Route::get('/schedule', [ScheduleController::class, 'index'])->name('schedule');
+    Route::get('/schedule/create', [ScheduleController::class, 'create'])->name('schedule.create');
+    Route::post('/schedule/store', [ScheduleController::class, 'store'])->name('schedule.store');
 
 });
 
