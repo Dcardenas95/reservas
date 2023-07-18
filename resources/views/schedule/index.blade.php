@@ -26,7 +26,7 @@
                         </div>
                         <div class="w-2/3 py-8 px-5">
                             <h3 class="font-bold text-lg">Mis citas para: {{ $date->isoFormat('dddd Do MMMM YYYY') }}</h3>
-                            
+                            <x-auth-validation-errors></x-auth-validation-errors>
                             @foreach ($dayScheduler as $schedule)
                                 <div class="flex items-center mt-2 bg-indigo-100 p-3 rounded">
                                     <div class="w-1/2">
@@ -35,13 +35,13 @@
                                     </div>
                                     <div>
                                         @can('delete', $schedule)
-                                            <form method="POST" onsubmit="return confirm('¿Realmente deseas cancelar esta cita?')" action="{{ route('my-schedule.destroy', ['scheduler' => $schedule->id]) }}" class="inline-block">
+                                            <form method="POST" onsubmit="return confirm('¿Realmente deseas cancelar esta cita?')" action="{{ route('schedule.destroy', ['scheduler' => $schedule]) }}" class="inline-block">
                                                 @method('DELETE')
                                                 @csrf
-                                               
+                                                <x-button>Cancelar</x-button>
+                                                <x-link class="mt-2" href="{{ route('schedule.edit', ['scheduler' => $schedule])}}">Reagendar cita</x-link>
                                             </form>
                                         @endcan
-                                       
                                     </div>
                                 </div>
                             @endforeach
