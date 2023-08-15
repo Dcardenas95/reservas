@@ -27,11 +27,24 @@ class DatabaseSeeder extends Seeder
             'name' => 'admin',
             'email' => 'admin@example.com',
         ]);
+        
         $userAdmin->assignRole('admin');
 
         $userStaff = \App\Models\User::factory()->create([
             'name' => 'John',
             'email' => 'john@example.com',
+        ]);
+        $userStaff->assignRole('staff');
+
+        $userStaff = \App\Models\User::factory()->create([
+            'name' => 'david',
+            'email' => 'david@example.com',
+        ]);
+        $userStaff->assignRole('staff');
+        
+        $userStaff = \App\Models\User::factory()->create([
+            'name' => 'paco',
+            'email' => 'paco@example.com',
         ]);
         $userStaff->assignRole('staff');
 

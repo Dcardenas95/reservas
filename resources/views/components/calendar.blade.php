@@ -1,3 +1,4 @@
+@props(['urlHandler'])
 <div class="antialiased sans-serif bg-gray-100 h-screen">
     <div x-data="app()" x-init="[initDate(), getNoOfDays()]" x-cloak>
         <div class="container mx-auto px-4 py-2 md:py-24">
@@ -56,7 +57,7 @@
                         <template x-for="(date, dateIndex) in no_of_days" :key="dateIndex">
                             <div style="width: 14.28%; height: 120px" class="px-4 pt-2 border-r border-b relative">
                                 <a 
-                                    :href="`/schedule?date=${year}-`+ (month + 1) + `-${date}`"
+                                    :href="`{{$urlHandler}}?date=${year}-`+ (month + 1) + `-${date}`"
                                     x-text="date"
                                     class="inline-flex w-6 h-6 items-center justify-center cursor-pointer text-center leading-none rounded-full transition ease-in-out duration-100"
                                     :class="{ 'bg-blue-500 text-white': isToday(date) ==
