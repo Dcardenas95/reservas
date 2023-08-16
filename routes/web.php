@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ImpersonateController;
 use App\Http\Controllers\OpeningHoursController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ScheduleController;
@@ -68,12 +69,19 @@ Route::middleware('auth')->group(function () {
             ->name('staff-scheduler.destroy');
     });
 
+    Route::get('/impersonate/out', [ImpersonateController::class, 'out'])
+        ->name('impersonate.out');
+
+
     Route::middleware('role:admin')->group(function () {
+
+        Route::get('/impersonate/{user}', [ImpersonateController::class, 'in'])
+            ->name('impersonate.in');
 
         Route::get('/users', [UsersController::class, 'index'])->name('users.index');
 
         Route::get('/users/create', [UsersController::class, 'create'])
-        ->name('users.create');
+            ->name('users.create');
 
         Route::post('/users/store', [UsersController::class, 'store'])
             ->name('users.store');

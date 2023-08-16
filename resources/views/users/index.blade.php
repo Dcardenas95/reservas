@@ -52,7 +52,7 @@
                                                                 {{ $user->name }}
                                                             </p>
                                                             <div class="block text-xs text-indigo-600">{{ $user->email }}</div>
-
+                                                            <a href="{{ route('impersonate.in', ['user' => $user->id]) }}" class="underline block text-xs text-indigo-600">Iniciar sesión</a>
                                                         </div>
                                                     </div>
                                                 </td>
