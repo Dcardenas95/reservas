@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
 
         $userAdmin = \App\Models\User::factory()->create([
             'name' => 'admin',
-            'email' => 'admin@example.com',
+            'email' => 'admin@gmail.com',
         ]);
         
         $userAdmin->assignRole('admin');
